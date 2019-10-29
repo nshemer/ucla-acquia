@@ -1,0 +1,29 @@
+{% extends "block.html.twig" %}
+{#
+/**
+ * @file
+ * Theme override for a Marketing Highlight - Horizontal.
+ *
+ * Available variables:
+ * - Look in the block.html.twig file for available variables.
+ */
+#}
+{% set label = FALSE %}
+{% set class_box = FALSE %}
+
+{% block content %}
+  <div class="marketing-highlight-horizontal">
+    <div class="marketing-highlight-horizontal__image">
+      {{ content.field_sf_image }}
+    </div>
+    <div class="marketing-highlight-horizontal__body">
+      <div class="marketing-highlight-horizontal__contents">
+        {% if content.field_sf_title|render %}
+        <h3 class="marketing-highlight-horizontal__title">{{ content.field_sf_title.0['#context'].value }}</h3>
+        {% endif %}
+        <a class="marketing-highlight-horizontal__link" href="{{ content.field_sf_link.0['#url'] }}">Link to Content(No field for this)</a>
+      </div>
+    </div>
+  </div>
+  {{ content|without('field_sf_title', 'field_sf_image', 'field_sf_link') }}
+{% endblock %}

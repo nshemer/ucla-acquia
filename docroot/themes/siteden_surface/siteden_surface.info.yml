@@ -1,0 +1,38 @@
+name: SiteDen Surface
+type: theme
+description: SiteDen Surface theme using the SiteDen Pattern Lab style library
+package: SiteDen
+core: 8.x
+
+# Using Classy as a base theme https://www.drupal.org/docs/8/theming-drupal-8/using-classy-as-a-base-theme
+base theme: classy
+
+libraries:
+  - siteden_surface/global-styles
+
+# Override Drupal libraries with libraries provided by this theme.
+libraries-override:
+  classy/base:
+    css:
+      component:
+        css/components/menu.css: false
+        css/components/pager.css: false
+        css/components/item-list.css: false
+  # Remove the Slick Slideshow theme
+  sitefarm_photo_gallery/sitefarm_photo_gallery.slick_theme: false
+
+ckeditor_stylesheets:
+  - dist/ckeditor.css
+
+regions:
+  header: Header
+  navigation: Navigation
+  full_width_top: Full Width Top
+  title: Title
+  content: Content
+  sidebar_first: First Sidebar
+  sidebar_second: Second Sidebar
+  footer: Footer
+  footer_nav: Footer Navigation
+  footer_bottom: Footer Bottom
+  footer_copyright: Footer Copyright

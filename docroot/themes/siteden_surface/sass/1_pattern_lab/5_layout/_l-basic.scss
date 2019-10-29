@@ -1,0 +1,49 @@
+//------------------------------------
+//  Basic sidebar layout
+//------------------------------------
+
+.l-basic {
+  @include breakpoint($bp-medium--up) {
+    @include l-default-settings();
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas:
+    ". title"
+    "first content";
+  }
+
+  .l-title {
+    grid-area: title;
+  }
+
+  .l-content {
+    grid-area: content;
+  }
+
+  .l-sidebar-first {
+    grid-area: first;
+  }
+
+  .l-sidebar-second {
+    grid-area: second;
+  }
+
+  &--reverse {
+    @include breakpoint($bp-medium--up) {
+      @include l-default-settings();
+      grid-template-columns: 2fr 1fr;
+      grid-template-areas:
+      "title ."
+      "content second";
+    }
+  }
+
+  &--2col {
+    @include breakpoint($bp-medium--up) {
+      @include l-default-settings();
+      grid-template-columns: 1fr 2fr 1fr;
+      grid-template-areas:
+      ". title ."
+      "first content second";
+    }
+  }
+}

@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+## Synchronize the master branch of Pattern Lab to the theme.
+##
+## Usage: fin theme-sync
+
+GIT_FOLDER=tmp-siteden-patternlab
+
+cd $THEME_PATH
+cd ../
+
+if [ -d $GIT_FOLDER ]
+then
+  cd $GIT_FOLDER
+  git checkout master
+  git pull origin master
+else
+  git clone --single-branch --branch master git@bitbucket.org:siteden/siteden-patternlab.git $GIT_FOLDER
+fi
+
+cd $THEME_PATH
+fin exec npm run themesync
+
+# Remove the temporary pattern lab directory
+cd ../
+rm -rf $GIT_FOLDER

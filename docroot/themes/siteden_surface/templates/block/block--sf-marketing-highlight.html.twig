@@ -1,0 +1,30 @@
+{% extends "block.html.twig" %}
+{#
+/**
+ * @file
+ * Theme override for a Marketing Highlight.
+ *
+ * Available variables:
+ * - Look in the block.html.twig file for available variables.
+ */
+#}
+{% set label = FALSE %}
+{% set class_box = FALSE %}
+
+{% block content %}
+  <section class="marketing-highlight">
+    <a class="marketing-highlight__image" href="{{ content.field_sf_link.0['#url'] }}">{{ content.field_sf_image }}</a>
+    <div class="marketing-highlight__body">
+      <h2 class="marketing-highlight__title"><a href="{{ content.field_sf_link.0['#url'] }}">{{ content.field_sf_title.0['#context'].value }}</a></h2>
+      {% if content.field_sf_mh_description|render %}
+      <div class="marketing-highlight__summary">
+        <p>{{ content.field_sf_mh_description.0['#context'].value }}</p>
+      </div>
+      {% endif %}
+      {% if content.field_sf_mh_call_to_action|render %}
+      <div class="marketing-highlight__cta"><a href="{{ content.field_sf_link.0['#url'] }}">{{ content.field_sf_mh_call_to_action.0['#context'].value }}</a></div>
+      {% endif %}
+    </div>
+  </section>
+  {{ content|without('field_sf_title', 'field_sf_image', 'field_sf_link', 'field_sf_mh_description', 'field_sf_mh_call_to_action') }}
+{% endblock %}

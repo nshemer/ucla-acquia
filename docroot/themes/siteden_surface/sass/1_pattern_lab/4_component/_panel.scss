@@ -1,0 +1,48 @@
+//------------------------------------
+//  Panel
+//------------------------------------
+
+// Default each Panel Pane to a white background
+.panel {
+  @include clearfix();
+  margin-bottom: $spacer--large;
+  background-color: $white;
+  overflow-wrap: break-word;
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  // Remove the bottom margin.
+  &--flush {
+    margin-bottom: 0;
+  }
+
+  // Remove the background color.
+  &--transparent {
+    background-color: transparent;
+  }
+
+  // Panel Title.
+  &__title {
+    @include heading--bar();
+    text-transform: uppercase;
+  }
+
+  &--mobile-collapse {
+    .panel__title {
+      @include accordian-title();
+      border-left: 0;
+      text-transform: initial;
+    }
+
+    .panel__content {
+      @include accordian-content();
+
+      @include breakpoint($bp-medium--up) {
+        border-bottom: 0;
+      }
+    }
+  }
+
+}
